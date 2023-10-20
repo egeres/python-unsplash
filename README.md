@@ -7,14 +7,18 @@ A library that provides a Python interface to [the Unsplash API](https://unsplas
 The easiest way to install the latest version
 is by using pip/easy_install to pull it from PyPI:
 
-    pip install python-unsplash
+```shell
+pip install python-unsplash
+```
 
 You may also use Git to clone the repository from
 Github and install it manually:
 
-    git clone https://github.com/yakupadakli/python-unsplash.git
-    cd python-unsplash
-    python setup.py install
+```shell
+git clone https://github.com/yakupadakli/python-unsplash.git
+cd python-unsplash
+python setup.py install
+```
 
 Python 2.7, 3.7, 3.8, 3.9 and 3.11 is supported for now.
 
@@ -22,16 +26,18 @@ Python 2.7, 3.7, 3.8, 3.9 and 3.11 is supported for now.
 
 Code is required for authenticated actions
 
-    from unsplash.api import Api
-    from unsplash.auth import Auth
+```python
+from unsplash.api import Api
+from unsplash.auth import Auth
 
-    client_id = ""
-    client_secret = ""
-    redirect_uri = ""
-    code = ""
+client_id = ""
+client_secret = ""
+redirect_uri = ""
+code = ""
 
-    auth = Auth(client_id, client_secret, redirect_uri, code=code)
-    api = Api(auth)
+auth = Auth(client_id, client_secret, redirect_uri, code=code)
+api = Api(auth)
+```
 
 ### User
 
@@ -41,7 +47,9 @@ Code is required for authenticated actions
 
 Get the user’s profile.
 
-    api.user.me()
+```python
+api.user.me()
+```
 
 ##### User update
 
@@ -77,8 +85,9 @@ Retrieve public details on a given user.
 | h  | Profile image height in pixels.  | optional |
 
 
-    api.user.get("yakupa")
-
+```python
+api.user.get("yakupa")
+```
 
 ##### User portfolio
 
@@ -88,9 +97,9 @@ Retrieve a single user’s portfolio link.
 | ------------- | ------------- | ------------- |
 | username  | Username  | required |
 
-
-    api.user.portfolio("yakupa")
-
+```python
+api.user.portfolio("yakupa")
+```
 
 ##### User photos
 
@@ -106,9 +115,9 @@ Get a list of photos uploaded by a user.
 | resolution  |  The frequency of the stats. (default: “days”) | optional |
 | quantity  |  The amount of for each stat. (default: 30) | optional |
 
-
-    api.user.portfolio("yakupa")
-
+```python
+api.user.portfolio("yakupa")
+```
 
 ##### User likes
 
@@ -121,8 +130,9 @@ Get a list of photos liked by a user.
 | per_page  | Number of items per page. (default: 10) | optional |
 | order_by  | How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)  | optional |
 
-    api.user.likes("yakupa")
-
+```python
+api.user.likes("yakupa")
+```
 
 ##### User collections
 
@@ -134,8 +144,9 @@ Get a list of collections created by the user.
 | page  | Page number to retrieve. (default: 1)  | optional |
 | per_page  | Number of items per page. (default: 10) | optional |
 
-    api.user.collections("yakupa")
-
+```python
+api.user.collections("yakupa")
+```
 
 ### Photo
 
@@ -149,9 +160,9 @@ Get a single page from the list of all photos.
 | per_page  | Number of items per page. (default: 10) | optional |
 | order_by  | How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest) | optional |
 
-
-    api.photo.all()
-
+```python
+api.photo.all()
+```
 
 ##### Photo curated
 
@@ -163,9 +174,9 @@ Get a single page from the list of the curated photos.
 | per_page  | Number of items per page. (default: 10) | optional |
 | order_by  | How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest) | optional |
 
-
-    api.photo.curated()
-
+```python
+api.photo.curated()
+```
 
 ##### Photo get
 
@@ -178,9 +189,9 @@ Get a single page from the list of the curated photos.
 | h  | Image height in pixels. | optional |
 | rect  | 4 comma-separated integers representing x, y, width, height of the cropped rectangle. | optional |
 
-
-    api.photo.get("Dwu85P9SOIk")
-
+```python
+api.photo.get("Dwu85P9SOIk")
+```
 
 ##### Photo random
 
@@ -202,9 +213,9 @@ the response will be an array of photos, even if the value of count is 1.
 | orientation  | Filter search results by photo orientation. Valid values are landscape, portrait, and squarish. | optional |
 | count  | The number of photos to return. (Default: 1; max: 30) | optional |
 
-
-    api.photo.random()
-
+```python
+api.photo.random()
+```
 
 ##### Photo stats
 
@@ -217,9 +228,9 @@ as well as the historical breakdown of these stats in a specific timeframe (defa
 | resolution  | The frequency of the stats. | optional |
 | quantity  | The amount of for each stat. | optional |
 
-
-    api.photo.stats("LF8gK8-HGSg")
-
+```python
+api.photo.stats("LF8gK8-HGSg")
+```
 
 ##### Photo like
 
@@ -231,9 +242,9 @@ Note: This action is idempotent; sending the POST request to a single photo mult
 | ------------- | ------------- | ------------- |
 | id  | The photo’s ID. | required |
 
-
-    api.photo.like("LF8gK8-HGSg")
-
+```python
+api.photo.like("LF8gK8-HGSg")
+```
 
 ##### Photo unlike
 
@@ -245,9 +256,9 @@ Note: This action is idempotent; sending the DELETE request to a single photo mu
 | ------------- | ------------- | ------------- |
 | id  | The photo’s ID. | required |
 
-
-    api.photo.unlike("LF8gK8-HGSg")
-
+```python
+api.photo.unlike("LF8gK8-HGSg")
+```
 
 ### Search
 
@@ -262,9 +273,9 @@ Get a single page of photo results for a query.
 | per_page  | Number of items per page. | optional |
 | collections  | Collection ID(‘s) to narrow search. If multiple, comma-separated. | optional |
 
-
-    api.search.photos("office")
-
+```python
+api.search.photos("office")
+```
 
 ##### Search collections
 
@@ -276,9 +287,9 @@ Get a single page of collection results for a query.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.search.collections("office")
-
+```python
+api.search.collections("office")
+```
 
 ##### Search users
 
@@ -290,9 +301,9 @@ Get a single page of user results for a query.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.search.users("yakupa")
-
+```python
+api.search.users("yakupa")
+```
 
 ### Collections
 
@@ -305,9 +316,9 @@ Get a single page from the list of all collections.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.collection.all()
-
+```python
+api.collection.all()
+```
 
 ##### Collections featured
 
@@ -318,9 +329,9 @@ Get a single page from the list of featured collections.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.collection.featured()
-
+```python
+api.collection.featured()
+```
 
 ##### Collections curated
 
@@ -331,9 +342,9 @@ Get a single page from the list of curated collections.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.collection.curated()
-
+```python
+api.collection.curated()
+```
 
 ##### Collections get
 
@@ -344,9 +355,9 @@ To view a user’s private collections, the read_collections scope is required.
 | ------------- | ------------- | ------------- |
 | id  | The collections’s ID. | required |
 
-
-    api.collection.get("547584")
-
+```python
+api.collection.get("547584")
+```
 
 ##### Collections get curated
 
@@ -357,9 +368,9 @@ To view a user’s private collections, the read_collections scope is required.
 | ------------- | ------------- | ------------- |
 | id  | The curated collections’s ID. | required |
 
-
-    api.collection.get_curated("547584")
-
+```python
+api.collection.get_curated("547584")
+```
 
 ##### Collections photos
 
@@ -371,9 +382,9 @@ Retrieve a collection’s photos.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.collection.photos("547584")
-
+```python
+api.collection.photos("547584")
+```
 
 ##### Collections curated photos
 
@@ -385,9 +396,9 @@ Retrieve a curated collection’s photos.
 | page  | Page number to retrieve. | optional |
 | per_page  | Number of items per page. | optional |
 
-
-    api.collection.curated_photos("547584")
-
+```python
+api.collection.curated_photos("547584")
+```
 
 ##### Collections related
 
@@ -397,9 +408,9 @@ Retrieve a list of collections related to this one.
 | ------------- | ------------- | ------------- |
 | id  | The collection’s ID. | required |
 
-
-    api.collection.related("547584")
-
+```python
+api.collection.related("547584")
+```
 
 ##### Collections create
 
@@ -412,9 +423,9 @@ This requires the write_collections scope.
 | description  | The collection’s description. | optional |
 | private  | Whether to make this collection private. | optional |
 
-
-    api.collection.create("New Test Collection")
-
+```python
+api.collection.create("New Test Collection")
+```
 
 ##### Collections update
 
@@ -428,9 +439,9 @@ This requires the write_collections scope.
 | description  | The collection’s description. | optional |
 | private  | Whether to make this collection private. | optional |
 
-
-    api.collection.update("547584")
-
+```python
+api.collection.update("547584")
+```
 
 ##### Collections delete
 
@@ -441,9 +452,9 @@ This requires the write_collections scope.
 | ------------- | ------------- | ------------- |
 | id  | The collection’s ID. | required |
 
-
-    api.collection.delete("547584")
-
+```python
+api.collection.delete("547584")
+```
 
 ##### Collections add photo
 
@@ -455,9 +466,9 @@ Requires the write_collections scope.
 | collection_id  | The collection’s ID. | required |
 | photo_id  | The photo’s ID. | required |
 
-
-    api.collection.add_photo("547584", "KSap1iDftvQ")
-
+```python
+api.collection.add_photo("547584", "KSap1iDftvQ")
+```
 
 ##### Collections remove photo
 
@@ -469,9 +480,9 @@ Requires the write_collections scope.
 | collection_id  | The collection’s ID. | required |
 | photo_id  | The photo’s ID. | required |
 
-
-    api.collection.remove_photo("547584", "KSap1iDftvQ")
-
+```python
+api.collection.remove_photo("547584", "KSap1iDftvQ")
+```
 
 ### Stats
 
@@ -479,13 +490,14 @@ Requires the write_collections scope.
 
 Get a list of counts for all of Unsplash.
 
-
-    api.stat.total()
-
+```python
+api.stat.total()
+```
 
 ##### Stats total
 
 Get the overall Unsplash stats for the past 30 days.
 
-
-    api.stat.month()
+```python
+api.stat.month()
+```
